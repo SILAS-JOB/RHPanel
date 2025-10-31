@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
+using api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 
 namespace api.Controllers
@@ -22,7 +24,7 @@ namespace api.Controllers
         [HttpPost]
         public string Create()
         {
-            // var funcionario = 
+            
             return "Pilas";
         }
     }

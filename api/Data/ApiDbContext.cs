@@ -7,9 +7,8 @@ namespace api.Data
     {
         public ApiDbContext(DbContextOptions<ApiDbContext> options) : base(options)
         {
-            
-        }
-        
+        }     
         public DbSet<Employer> Employers { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }
