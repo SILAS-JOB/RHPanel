@@ -1,16 +1,15 @@
-$nav-color: #B4BEC9;
+$layout-color: #B4BEC9;
 
 div {
-  // O 'div' externo não precisa de flex, 
-  // a menos que você queira centralizar a barra inteira
-  // na página, o que é incomum.
   
   nav {
     display: flex;
     align-items: center; 
-    gap: 12px;           
+    gap: 12px;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;           
 
-    background-color: $nav-color;
+    background-color: $layout-color;
     width: 100%;
 
     
@@ -22,7 +21,7 @@ div {
 }
 
 .icons {
-  width: 50px;
-  height: 50px;
+  width: 50px !important;
+  height: 50px !important;
   margin-left: 12px; 
 }

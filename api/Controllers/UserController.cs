@@ -15,17 +15,33 @@ namespace api.Controllers
     [Route("api/v1/[controller]")]
     public class UserController : ControllerBase
     {
-        [HttpGet]
-        public string Find()
+        private readonly Employer? _employer;
+        private readonly Admin? _admin;
+
+        public UserController(Employer employer, Admin admin)
         {
-            return "Hello World";
+            _employer = employer;
+            _admin = admin;
+        }
+
+        [HttpGet]
+        public void Find()
+        {
+            
         }
 
         [HttpPost]
         public string Create()
         {
-            
+
             return "Pilas";
+        }
+
+        [HttpGet]
+        [Route("/target/[controller]")]
+        public string Pilas()
+        {
+            return "oll";
         }
     }
 }
