@@ -1,0 +1,6 @@
+.vs
+
+appsettings.Development.json
+appsettings.json
+
+api.http
