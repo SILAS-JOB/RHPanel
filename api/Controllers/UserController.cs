@@ -7,34 +7,43 @@ using api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
-
+using api.Data;
 
 namespace api.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
+
     public class UserController : ControllerBase
     {
-        private readonly Employer? _employer;
-        private readonly Admin? _admin;
+        private readonly ApiDbContext _dbContext;
 
-        public UserController(Employer employer, Admin admin)
+        public UserController(ApiDbContext dbContext)
         {
-            _employer = employer;
-            _admin = admin;
+            _dbContext = dbContext;
         }
 
         [HttpGet]
-        public void Find()
+        public IActionResult FindAll()
         {
-            
+            var list = _dbContext.Employers.ToList();
+            return Ok(list);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Find(int id)
+        {
+            var emp = _dbContext.Employers.Find(id);
+            if (emp == null) return NotFound();
+            return Ok(emp);
         }
 
         [HttpPost]
-        public string Create()
+        public IActionResult Create([FromBody] Employer employer)
         {
-
-            return "Pilas";
+            _dbContext.Employers.Add(employer);
+            _dbContext.SaveChanges();
+            return CreatedAtAction(nameof(Find), new { id = employer.Id }, employer);
         }
 
         [HttpGet]
