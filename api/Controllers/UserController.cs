@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using api.Data;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
 
 namespace api.Controllers
 {
@@ -31,7 +32,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Find(int id)
+        public IActionResult FindEmployee(int id)
         {
             var emp = _dbContext.Employers.Find(id);
             if (emp == null) return NotFound();
@@ -39,18 +40,24 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Employer employer)
+        public IActionResult CreateEmployee([FromBody] Employer employer)
         {
             _dbContext.Employers.Add(employer);
             _dbContext.SaveChanges();
-            return CreatedAtAction(nameof(Find), new { id = employer.Id }, employer);
+            return CreatedAtAction(nameof(FindEmployee), new { id = employer.Id }, employer);
         }
 
-        [HttpGet]
-        [Route("/target/[controller]")]
-        public string Pilas()
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEmployee(int id, Employer employer)
         {
-            return "oll";
-        }
+            // var emp = _dbContext.Employers.Find(id);
+            // if (emp == null) return NotFound();
+            // _dbContext.Employers.SaveChanges();
+            // _dbContext.Employers.Remove(emp);
+            // return NoContent();
+            var emp = _dbContext.Employers.FindAsync(id);
+            await _dbContext.SaveChangesAsync();
+            return NoContent();
+         }
     }
 }
