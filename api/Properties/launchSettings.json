@@ -5,18 +5,20 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
-      "launchUrl": "swagger",
+      "launchUrl": "/swagger/index.html",
       "applicationUrl": "http://localhost:5272/",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        
       }
+      
     },
     "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7266;http://localhost:5272",
+      "launchUrl": "/swagger/index.html",
+      "applicationUrl": "https://localhost:7266,http://localhost:5272",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
