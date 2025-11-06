@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace api.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialValue : Migration
+    public partial class StartPoint : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,10 +31,10 @@ namespace api.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AdmissionDate = table.Column<int>(type: "int", nullable: false),
+                    AdmissionDate = table.Column<DateOnly>(type: "date", nullable: true),
                     Salary = table.Column<int>(type: "int", nullable: false),
                     IsWorking = table.Column<bool>(type: "bit", nullable: false),
-                    DemissionDate = table.Column<int>(type: "int", nullable: true),
+                    DemissionDate = table.Column<DateOnly>(type: "date", nullable: true),
                     Observation = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
