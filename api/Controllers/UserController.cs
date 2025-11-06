@@ -48,16 +48,13 @@ namespace api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmployee(int id, Employer employer)
+        public async Task<IActionResult> DeleteEmployee(int id)
         {
-            // var emp = _dbContext.Employers.Find(id);
-            // if (emp == null) return NotFound();
-            // _dbContext.Employers.SaveChanges();
-            // _dbContext.Employers.Remove(emp);
-            // return NoContent();
-            var emp = _dbContext.Employers.FindAsync(id);
+            var emp = await _dbContext.Employers.FindAsync(id);
+            if (emp == null) return NotFound();
+            _dbContext.Employers.Remove(emp);
             await _dbContext.SaveChangesAsync();
             return NoContent();
-         }
+        }
     }
 }
