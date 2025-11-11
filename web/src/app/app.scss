@@ -4,7 +4,8 @@
   
   grid-template-areas: 
     "nav   nav"
-    "sidebar content";
+    "sidebar content"
+    "sidebar table";
   grid-template-columns: 240px 1fr;
   grid-template-rows: auto 1fr;
   height: 100vh;
