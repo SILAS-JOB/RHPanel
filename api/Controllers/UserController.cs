@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using api.Data;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace api.Controllers
 {
@@ -46,6 +47,31 @@ namespace api.Controllers
             _dbContext.SaveChanges();
             return CreatedAtAction(nameof(FindEmployee), new { id = employer.Id }, employer);
         }
+
+        // [HttpPut]
+        // public IActionResult UpdateEmployee(int id, [FromBody] Employer employer)
+        // {
+        //     var emp = _dbContext.Employers.Find(id);
+        //     if (emp == null) return NotFound();
+        //     _dbContext.Employers.Update(emp);
+        //     _dbContext.SaveChanges();
+        //     return Ok(nameof(FindEmployee));
+        // }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEmployee(int id, [FromBody] Employer employer)
+        {
+            var emp = await _dbContext.Employers.FindAsync(id);
+            if (emp == null) return NotFound();
+            emp.Name = employer.Name;
+            emp.DemissionDate = employer.DemissionDate;
+            emp.Salary = employer.Salary;
+            emp.IsWorking = employer.IsWorking;
+            emp.Observation = employer.Observation;
+            await _dbContext.SaveChangesAsync();
+            return Ok(emp);
+        }
+            
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
