@@ -17,7 +17,7 @@ export interface Employee {
 @Component({
   selector: 'app-funcionarios',
   imports: [CommonModule],
-  template: '<ul> @for(emp of employees; track emp.id){<li>{{emp.name}}</li>}</ul>',
+  templateUrl: './funcionarios.component.html', 
   styleUrls: ['./funcionarios.component.scss'],
 })
 export class FuncionariosComponent implements OnInit {
@@ -40,7 +40,5 @@ export class FuncionariosComponent implements OnInit {
     });
     
   }
-  renderizarFuncionarios(): void {
-    this.funcionariosService.getItems().subscribe()
-  }
+  
 }
