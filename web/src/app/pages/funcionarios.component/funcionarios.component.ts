@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FuncionariosService } from '../../services/funcionarios.service';
 import { CommonModule } from '@angular/common';
 
+
+
 export interface Employee {
   id: number;
   name: string;
@@ -15,7 +17,7 @@ export interface Employee {
 @Component({
   selector: 'app-funcionarios',
   imports: [CommonModule],
-  templateUrl: './funcionarios.component.html',
+  template: '<ul> @for(emp of employees; track emp.id){<li>{{emp.name}}</li>}</ul>',
   styleUrls: ['./funcionarios.component.scss'],
 })
 export class FuncionariosComponent implements OnInit {
@@ -37,5 +39,8 @@ export class FuncionariosComponent implements OnInit {
       }
     });
     
+  }
+  renderizarFuncionarios(): void {
+    this.funcionariosService.getItems().subscribe()
   }
 }
