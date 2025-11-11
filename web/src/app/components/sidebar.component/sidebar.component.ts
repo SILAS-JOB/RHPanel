@@ -10,15 +10,4 @@ export class SidebarComponent {
 
 }
 
-// function changeContent(templateUrl:string) {
-//   var viewContent = document.getElementById('content');
-//   if(viewContent) {
-//     viewContent.style.visibility = 'hidden';
-//   }
-
-//   var changeView = 
-// }
-
-
-
 
