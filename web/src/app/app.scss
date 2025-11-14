@@ -1,12 +1,14 @@
 
 .page-layout {
   display: grid;
-  
+
   grid-template-areas: 
     "nav   nav"
     "sidebar content"
-    "sidebar table"
+    "sidebar table "
     "footer footer";
+  
+
   grid-template-columns: 240px 1fr;
   grid-template-rows: auto 1fr;
   height: 100vh;
@@ -27,4 +29,12 @@ app-navbar {
   grid-area: content;
   padding: 20px;
   background-color: #ffffff;
+}
+
+app-funcionarios {
+  grid-area: table;
+}
+
+app-intro {
+  grid-area: intro
 }
