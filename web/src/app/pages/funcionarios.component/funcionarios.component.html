@@ -1,21 +1,26 @@
 <table>
-    <tr>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Data de Admissão</th>
-        <th>Salário</th>
-        <th>Status Ativo</th>
-        <th>Data de Demissão</th>
-        <th>Observações</th>
-    </tr>
-        @for(emp of employees; track emp.id){
+    <thead>
         <tr>
-            <td>{{emp.id}}</td>
-            <td>{{emp.name}}</td>
-            <td>{{emp.admissionDate}}</td>
-            <td>{{emp.salary}}</td>
-            <td>{{emp.isWorking}}</td>
-            <td>{{emp.demissionDate}}</td>
-            <td>{{emp.observation}}</td>
-        </tr>}
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Data de Admissão</th>
+            <th>Salário</th>
+            <th>Status Ativo</th>
+            <th>Data de Demissão</th>
+            <th>Observações</th>
+        </tr>
+    </thead>
+        <tbody>
+            @for(emp of employees; track emp.id){
+                <tr>
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.admissionDate}}</td>
+                    <td>{{emp.salary}}</td>
+                    <td>{{emp.isWorking}}</td>  
+                    <td>{{emp.demissionDate}}</td>
+                    <td>{{emp.observation}}</td>
+                </tr>
+            }
+        </tbody>
 </table>
