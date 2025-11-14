@@ -1,6 +1,14 @@
+#visual studio 
 .vs
 
+#private
 appsettings.Development.json
 appsettings.json
 
+#replaced for swagger
 api.http
+
+#bins
+obj
+bin
+
