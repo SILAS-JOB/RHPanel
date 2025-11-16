@@ -10,5 +10,6 @@ namespace api.Data
         }     
         public DbSet<Employer> Employers { get; set; }
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<Archive> files {  get; set;}
     }
 }
