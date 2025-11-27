@@ -1,1 +1,0 @@
-Ferramenta de RH feita com Angular e .NET

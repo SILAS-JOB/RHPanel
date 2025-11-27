@@ -1,4 +1,18 @@
-<table>
+<!-- Mensagem de Loading -->
+<div *ngIf="loading" class="loader-container">
+    <p>Carregando Dados...</p>
+    <span class="loader"></span>
+</div>
+
+<div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+</div>
+
+<div *ngIf="!loading && !error && employees.length === 0" class="no-data-message">
+    <p>Nenhum funcionário encontrado.</p>
+</div>
+
+<table *ngIf="!loading && !error && employees.length > 0">
     <thead>
         <tr>
             <th>Id</th>
@@ -10,17 +24,17 @@
             <th>Observações</th>
         </tr>
     </thead>
-        <tbody>
-            @for(emp of employees; track emp.id){
-                <tr>
-                    <td>{{emp.id}}</td>
-                    <td>{{emp.name}}</td>
-                    <td>{{emp.admissionDate}}</td>
-                    <td>{{emp.salary}}</td>
-                    <td>{{emp.isWorking}}</td>  
-                    <td>{{emp.demissionDate}}</td>
-                    <td>{{emp.observation}}</td>
-                </tr>
-            }
-        </tbody>
+    <tbody>
+        @for(emp of employees; track emp.id){
+            <tr>
+                <td>{{emp.id}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.admissionDate | date:'shortDate'}}</td> 
+                <td>{{emp.salary | currency:'BRL'}}</td> 
+                <td>{{emp.isWorking ? 'Sim' : 'Não'}}</td>  
+                <td>{{emp.demissionDate ? (emp.demissionDate | date:'shortDate') : '-'}}</td>
+                <td>{{emp.observation || '-'}}</td>
+            </tr>
+        }
+    </tbody>
 </table>
